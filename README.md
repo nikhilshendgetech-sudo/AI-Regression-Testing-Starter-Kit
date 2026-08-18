@@ -5,7 +5,7 @@ A practical starter kit for QA Engineers and SDETs to design repeatable regressi
 [![Python](https://img.shields.io/badge/Python-3.12%2B-blue.svg)](https://www.python.org/)
 [![PyTest](https://img.shields.io/badge/PyTest-8%2B-green.svg)](https://pytest.org/)
 [![Promptfoo](https://img.shields.io/badge/Promptfoo-LLM%20Evaluation-purple.svg)](https://www.promptfoo.dev/)
-[![CI](https://github.com/nikhilshendgetech-sudo/AI-Regression-Testing-Starter-Kit/actions/workflows/ci.yml/badge.svg)](https://github.com/nikhilshendgetech-sudo/AI-Regression-Testing-Starter-Kit/actions/workflows/ci.yml)
+[![CI](https://github.com/nikhilshendgetch-sudo/AI-Regression-Testing-Starter-Kit/actions/workflows/ci.yml/badge.svg)](https://github.com/nikhilshendgetch-sudo/AI-Regression-Testing-Starter-Kit/actions/workflows/ci.yml)
 
 ---
 
@@ -116,6 +116,10 @@ AI-Regression-Testing-Starter-Kit/
 │   └── AI regression evaluation datasets
 │
 ├── docs/
+│   ├── images/
+│   │   ├── github-actions-runs.png
+│   │   ├── github-actions-success.png
+│   │   └── html-test-report.png
 │   └── AI testing documentation
 │
 ├── examples/
@@ -245,6 +249,22 @@ The current MVP regression validation suite contains **13 automated tests** cove
 | AI-REG-010 | Regression                | Customer Support Assistant        |
 
 > **Note:** The current MVP validates regression-test case structure and expectations. It does not yet execute these scenarios against a live LLM or calculate production AI quality scores.
+
+---
+
+## 📸 Test Execution Evidence
+
+### GitHub Actions
+
+The regression suite is automatically executed through GitHub Actions on every push and pull request.
+
+![GitHub Actions CI](docs/images/github-actions-success.png)
+
+### HTML Test Report
+
+The CI pipeline generates a self-contained HTML report with individual test results and execution details.
+
+![HTML Test Report](docs/images/html-test-report.png)
 
 ---
 
