@@ -5,8 +5,7 @@ A practical starter kit for QA Engineers and SDETs to design repeatable regressi
 [![Python](https://img.shields.io/badge/Python-3.12%2B-blue.svg)](https://www.python.org/)
 [![PyTest](https://img.shields.io/badge/PyTest-8%2B-green.svg)](https://pytest.org/)
 [![Promptfoo](https://img.shields.io/badge/Promptfoo-LLM%20Evaluation-purple.svg)](https://www.promptfoo.dev/)
-[![CI](https://github.com/nikhilshendgetch-sudo/AI-Regression-Testing-Starter-Kit/actions/workflows/ci.yml/badge.svg)](https://github.com/nikhilshendgetch-sudo/AI-Regression-Testing-Starter-Kit/actions/workflows/ci.yml)
-
+[![CI](https://github.com/nikhilshendgetech-sudo/AI-Regression-Testing-Starter-Kit/actions/workflows/ci.yml/badge.svg)](https://github.com/nikhilshendgetech-sudo/AI-Regression-Testing-Starter-Kit/actions/workflows/ci.yml)
 ---
 
 ## 🚀 What is this?
