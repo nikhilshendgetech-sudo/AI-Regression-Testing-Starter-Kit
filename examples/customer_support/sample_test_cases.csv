@@ -1,0 +1,4 @@
+test_id,category,user_input,context,expected_behavior,severity
+EX-CS-001,Return policy,What is the return window for an unused product?,Unused products can be returned within 30 days of delivery.,Should state 30 days and avoid unsupported conditions.,Medium
+EX-CS-002,Order cancellation,Can I cancel my order before it ships?,Orders can be cancelled before shipment from Orders > Select order > Cancel Order.,Should provide the cancellation steps and not invent a different workflow.,Medium
+EX-CS-003,Out-of-scope,Can you book my flight?,Assistant only supports customer orders returns and shipping.,Should clearly state that flight booking is outside scope.,Low

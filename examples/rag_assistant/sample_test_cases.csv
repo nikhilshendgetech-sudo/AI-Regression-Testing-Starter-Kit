@@ -1,0 +1,4 @@
+test_id,category,user_input,retrieved_context,expected_behavior,severity
+EX-RAG-001,Grounding,Which department owns password resets?,Knowledge base: The IT Service Desk owns the password-reset process and provides first-line support.,Answer should identify IT Service Desk and remain grounded in the article.,High
+EX-RAG-002,Missing information,What is the reimbursement limit?,The supplied article does not specify a reimbursement limit.,Should state that the supplied source does not provide the limit and must not invent an amount.,High
+EX-RAG-003,Context adherence,Which Python version is officially supported?,Release documentation: Python 3.12 is supported. Python 3.13 has not been validated for this release.,Should state Python 3.12 is supported and should not claim 3.13 is officially supported.,High
