@@ -5,6 +5,7 @@ A practical starter kit for QA Engineers and SDETs to design repeatable regressi
 [![Python](https://img.shields.io/badge/Python-3.12%2B-blue.svg)](https://www.python.org/)
 [![PyTest](https://img.shields.io/badge/PyTest-8%2B-green.svg)](https://pytest.org/)
 [![Promptfoo](https://img.shields.io/badge/Promptfoo-LLM%20Evaluation-purple.svg)](https://www.promptfoo.dev/)
+[![CI](https://github.com/nikhilshendgetech-sudo/AI-Regression-Testing-Starter-Kit/actions/workflows/ci.yml/badge.svg)](https://github.com/nikhilshendgetech-sudo/AI-Regression-Testing-Starter-Kit/actions/workflows/ci.yml)
 
 ---
 
@@ -49,6 +50,7 @@ This starter kit includes:
 * Python + pytest testing framework
 * Promptfoo evaluation example
 * GitHub Actions CI workflow
+* Automated HTML test reporting
 * Customer Support example
 * RAG Assistant example
 * Prompt Regression example
@@ -171,6 +173,14 @@ pip install -r python/requirements.txt
 pytest python/tests -v
 ```
 
+### 5. Generate an HTML test report
+
+```bash
+pytest python/tests -v --html=reports/ai-regression-report.html --self-contained-html
+```
+
+The generated report provides a detailed view of test results, execution duration, and individual regression scenarios.
+
 ---
 
 ## 🧪 Example Scenarios
@@ -202,6 +212,39 @@ Typical checks include:
 Compare AI behavior before and after a prompt change.
 
 This helps identify situations where a new prompt improves one use case but causes regressions in another.
+
+---
+
+## ✅ Current Test Results
+
+The current MVP regression validation suite contains **13 automated tests** covering dataset integrity and **10 AI regression scenarios**.
+
+| Metric               |           Result |
+| -------------------- | ---------------: |
+| Total Tests          |               13 |
+| Passed               |               13 |
+| Failed               |                0 |
+| Skipped              |                0 |
+| Regression Scenarios |               10 |
+| Execution Time       | ~0.4 sec (local) |
+| CI Status            |        Passing ✅ |
+
+### Validated Regression Scenarios
+
+| ID         | Evaluation Area           | Application                       |
+| ---------- | ------------------------- | --------------------------------- |
+| AI-REG-001 | Correctness               | Customer Support Assistant        |
+| AI-REG-002 | Hallucination             | Company Policy RAG Assistant      |
+| AI-REG-003 | Relevance                 | E-commerce Assistant              |
+| AI-REG-004 | Consistency               | HR Policy Assistant               |
+| AI-REG-005 | Context Adherence         | Documentation Assistant           |
+| AI-REG-006 | RAG Grounding             | Knowledge Base Assistant          |
+| AI-REG-007 | Prompt Injection          | Customer Support RAG Assistant    |
+| AI-REG-008 | Sensitive Data Protection | HR Assistant                      |
+| AI-REG-009 | Out-of-Scope Handling     | Technical Documentation Assistant |
+| AI-REG-010 | Regression                | Customer Support Assistant        |
+
+> **Note:** The current MVP validates regression-test case structure and expectations. It does not yet execute these scenarios against a live LLM or calculate production AI quality scores.
 
 ---
 
@@ -270,6 +313,10 @@ Install Dependencies
        ↓
 Run Regression Tests
        ↓
+Generate HTML Report
+       ↓
+Upload Report Artifact
+       ↓
     Test Result
      ↙       ↘
    PASS      FAIL
@@ -277,7 +324,17 @@ Run Regression Tests
  Continue    Investigate
 ```
 
-This provides a foundation for integrating AI regression testing into a larger CI/CD pipeline.
+### CI Test Report
+
+Each GitHub Actions run generates a self-contained HTML test report and uploads it as a workflow artifact.
+
+Artifact name:
+
+```text
+ai-regression-test-report
+```
+
+This allows test results to be inspected after each CI execution without committing generated reports to the repository.
 
 ---
 
@@ -303,7 +360,6 @@ Future improvements may include:
 * [ ] LLM-as-a-Judge evaluation
 * [ ] Automated baseline comparison
 * [ ] Quality threshold gates
-* [ ] HTML evaluation reports
 * [ ] Expanded RAG testing scenarios
 * [ ] Additional CI/CD integrations
 * [ ] Production-oriented AI test examples
