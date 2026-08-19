@@ -2,6 +2,14 @@
 
 A practical starter kit for QA Engineers and SDETs to design repeatable regression testing workflows for AI/LLM applications.
 
+## 🚀 Get the Free MVP
+
+**Free MVP v1.0.0** is available now.
+
+👉 **[Get the Free MVP](../../releases/latest)**
+
+Includes the complete starter kit with AI regression datasets, Python/pytest tests, Promptfoo example, evaluation scorecard, documentation, and CI workflow.
+
 [![Python](https://img.shields.io/badge/Python-3.12%2B-blue.svg)](https://www.python.org/)
 [![PyTest](https://img.shields.io/badge/PyTest-8%2B-green.svg)](https://pytest.org/)
 [![Promptfoo](https://img.shields.io/badge/Promptfoo-LLM%20Evaluation-purple.svg)](https://www.promptfoo.dev/)
