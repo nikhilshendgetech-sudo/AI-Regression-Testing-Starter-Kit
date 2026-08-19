@@ -14,6 +14,30 @@ Includes the complete starter kit with AI regression datasets, Python/pytest tes
 [![PyTest](https://img.shields.io/badge/PyTest-8%2B-green.svg)](https://pytest.org/)
 [![Promptfoo](https://img.shields.io/badge/Promptfoo-LLM%20Evaluation-purple.svg)](https://www.promptfoo.dev/)
 [![CI](https://github.com/nikhilshendgetech-sudo/AI-Regression-Testing-Starter-Kit/actions/workflows/ci.yml/badge.svg)](https://github.com/nikhilshendgetech-sudo/AI-Regression-Testing-Starter-Kit/actions/workflows/ci.yml)
+
+---
+
+## 🌐 Live Demo
+
+Explore the live landing page for the AI Regression Testing Starter Kit:
+
+👉 **[View Live Demo](https://nikhilshendgetech-sudo.github.io/AI-Regression-Testing-Starter-Kit/)**
+
+The live page provides an overview of the Free MVP, included resources,
+regression workflow, test evidence, and project documentation.
+
+---
+
+## 💬 Feedback
+
+Tried the Free MVP?
+
+Your feedback helps improve the starter kit and shape future versions.
+
+👉 **[Share Your Feedback](https://forms.gle/gjacM7ki9Hd44Wcu5)**
+
+Feedback takes approximately 1–2 minutes.
+
 ---
 
 ## 🚀 What is this?
