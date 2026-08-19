@@ -1,0 +1,2011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="AI Regression Testing Starter Kit — a practical free MVP for QA Engineers, SDETs, and automation engineers testing AI and LLM applications.">
+
+<meta name="theme-color" content="#080c18">
+
+<title>AI Regression Testing Starter Kit — Free MVP</title>
+
+<style>
+
+:root{
+  --bg:#080c18;
+  --bg2:#0d1324;
+  --surface:#11192b;
+  --surface2:#17223a;
+  --text:#f7f9ff;
+  --muted:#9eabc4;
+  --border:#263653;
+  --accent:#7c9cff;
+  --accent2:#a78bfa;
+  --success:#69d6a4;
+  --max:1160px;
+  --shadow:0 20px 60px rgba(0,0,0,.28);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(124,156,255,.12),
+      transparent 32rem
+    ),
+    radial-gradient(
+      circle at 85% 8%,
+      rgba(167,139,250,.10),
+      transparent 30rem
+    ),
+    var(--bg);
+
+  color:var(--text);
+  line-height:1.65;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(
+    var(--max),
+    calc(100% - 40px)
+  );
+
+  margin:auto;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+
+  background:rgba(8,12,24,.82);
+
+  backdrop-filter:blur(16px);
+
+  border-bottom:
+    1px solid
+    rgba(38,54,83,.8);
+}
+
+.nav{
+  min-height:70px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:20px;
+}
+
+.brand{
+  font-weight:850;
+
+  letter-spacing:-.025em;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+}
+
+.brand-mark{
+  width:30px;
+  height:30px;
+
+  border-radius:9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent),
+      var(--accent2)
+    );
+
+  display:grid;
+
+  place-items:center;
+
+  color:#080c18;
+
+  font-weight:950;
+}
+
+.navlinks{
+  display:flex;
+
+  gap:24px;
+
+  color:var(--muted);
+
+  font-size:.92rem;
+}
+
+.navlinks a:hover{
+  color:var(--text);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  text-align:center;
+
+  padding:104px 0 72px;
+}
+
+.eyebrow{
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  border:
+    1px solid
+    var(--border);
+
+  background:
+    rgba(17,25,43,.75);
+
+  border-radius:999px;
+
+  padding:7px 13px;
+
+  color:#c5cee0;
+
+  font-size:.84rem;
+
+  box-shadow:
+    0 8px 30px
+    rgba(0,0,0,.16);
+}
+
+.dot{
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:var(--success);
+
+  box-shadow:
+    0 0 14px
+    rgba(105,214,164,.7);
+}
+
+h1{
+  max-width:980px;
+
+  margin:24px auto 20px;
+
+  font-size:
+    clamp(
+      2.8rem,
+      7vw,
+      5.7rem
+    );
+
+  line-height:.98;
+
+  letter-spacing:-.065em;
+}
+
+.gradient{
+  background:
+    linear-gradient(
+      100deg,
+      #8ca8ff,
+      #b69cff 55%,
+      #8ca8ff
+    );
+
+  -webkit-background-clip:text;
+
+  background-clip:text;
+
+  color:transparent;
+}
+
+.hero p{
+  max-width:790px;
+
+  margin:
+    0 auto 30px;
+
+  color:var(--muted);
+
+  font-size:1.12rem;
+}
+
+.actions{
+  display:flex;
+
+  justify-content:center;
+
+  flex-wrap:wrap;
+
+  gap:12px;
+}
+
+.btn{
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:8px;
+
+  padding:12px 19px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:11px;
+
+  background:var(--surface);
+
+  font-weight:780;
+
+  transition:.2s ease;
+
+  cursor:pointer;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+
+  border-color:#425477;
+}
+
+.btn.primary{
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent),
+      #93a9ff
+    );
+
+  color:#080c18;
+
+  border-color:transparent;
+
+  box-shadow:
+    0 10px 28px
+    rgba(124,156,255,.22);
+}
+
+.btn.feedback{
+  background:
+    linear-gradient(
+      135deg,
+      #69d6a4,
+      #8de0ba
+    );
+
+  color:#07150f;
+
+  border-color:transparent;
+
+  box-shadow:
+    0 10px 28px
+    rgba(105,214,164,.18);
+}
+
+.trust{
+  display:flex;
+
+  justify-content:center;
+
+  flex-wrap:wrap;
+
+  gap:10px;
+
+  margin-top:28px;
+}
+
+.pill{
+  padding:7px 11px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:9px;
+
+  background:
+    rgba(17,25,43,.55);
+
+  color:#bdc7da;
+
+  font-size:.8rem;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+  padding:0 0 30px;
+}
+
+.statbar{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:1px;
+
+  background:var(--border);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:18px;
+
+  overflow:hidden;
+
+  box-shadow:var(--shadow);
+}
+
+.stat{
+  background:
+    rgba(17,25,43,.78);
+
+  padding:24px;
+
+  text-align:center;
+}
+
+.stat strong{
+  display:block;
+
+  font-size:1.7rem;
+
+  letter-spacing:-.035em;
+}
+
+.stat span{
+  color:var(--muted);
+
+  font-size:.86rem;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+  padding:76px 0;
+}
+
+.head{
+  max-width:750px;
+
+  margin-bottom:32px;
+}
+
+.kicker{
+  color:var(--accent);
+
+  font-size:.78rem;
+
+  text-transform:uppercase;
+
+  letter-spacing:.13em;
+
+  font-weight:850;
+
+  margin-bottom:9px;
+}
+
+h2{
+  font-size:
+    clamp(
+      1.9rem,
+      3.5vw,
+      2.8rem
+    );
+
+  line-height:1.08;
+
+  letter-spacing:-.045em;
+
+  margin:
+    0 0 13px;
+}
+
+.head p,
+.muted{
+  color:var(--muted);
+}
+
+
+/* =========================
+   FEATURE CARDS
+========================= */
+
+.grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:16px;
+}
+
+.card{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(17,25,43,.94),
+      rgba(14,21,37,.94)
+    );
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:17px;
+
+  padding:24px;
+
+  box-shadow:
+    0 12px 36px
+    rgba(0,0,0,.13);
+
+  transition:.2s ease;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+
+  border-color:#3a4d72;
+}
+
+.icon{
+  width:38px;
+  height:38px;
+
+  border-radius:11px;
+
+  display:grid;
+
+  place-items:center;
+
+  background:
+    rgba(124,156,255,.12);
+
+  border:
+    1px solid
+    rgba(124,156,255,.22);
+
+  margin-bottom:17px;
+
+  color:#a9bcff;
+
+  font-weight:900;
+
+  font-size:.75rem;
+}
+
+.card h3{
+  margin:
+    0 0 7px;
+
+  font-size:1.05rem;
+}
+
+.card p{
+  margin:0;
+
+  color:var(--muted);
+
+  font-size:.94rem;
+}
+
+
+/* =========================
+   WORKFLOW
+========================= */
+
+.workflow{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:12px;
+}
+
+.step{
+  position:relative;
+
+  background:var(--surface);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:15px;
+
+  padding:21px;
+}
+
+.num{
+  color:var(--accent);
+
+  font-size:.76rem;
+
+  font-weight:900;
+
+  letter-spacing:.08em;
+
+  margin-bottom:9px;
+}
+
+.step strong{
+  display:block;
+}
+
+.step p{
+  margin:6px 0 0;
+
+  font-size:.9rem;
+}
+
+
+/* =========================
+   EVIDENCE
+========================= */
+
+.evidence{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:22px;
+}
+
+.shot{
+  margin:0;
+
+  background:var(--surface);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:18px;
+
+  padding:9px;
+
+  box-shadow:var(--shadow);
+}
+
+.shot img{
+  display:block;
+
+  width:100%;
+
+  border-radius:11px;
+}
+
+.shot figcaption{
+  padding:
+    12px 10px 7px;
+
+  color:var(--muted);
+
+  font-size:.84rem;
+}
+
+
+/* =========================
+   AUDIENCE
+========================= */
+
+.audience{
+  display:grid;
+
+  grid-template-columns:
+    1.15fr .85fr;
+
+  gap:20px;
+}
+
+.callout{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(23,34,58,.96),
+      rgba(17,25,43,.96)
+    );
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:20px;
+
+  padding:30px;
+
+  box-shadow:var(--shadow);
+}
+
+.list{
+  padding-left:20px;
+
+  margin:0;
+}
+
+.list li{
+  margin:9px 0;
+
+  color:var(--muted);
+}
+
+.mini-list{
+  display:grid;
+
+  gap:10px;
+}
+
+.mini{
+  padding:13px 14px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:11px;
+
+  background:
+    rgba(8,12,24,.25);
+
+  color:#c3cce0;
+
+  font-size:.9rem;
+}
+
+
+/* =========================
+   FEEDBACK
+========================= */
+
+.feedback-box{
+  text-align:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(105,214,164,.08),
+      rgba(124,156,255,.08)
+    );
+
+  border:
+    1px solid
+    rgba(105,214,164,.25);
+
+  border-radius:22px;
+
+  padding:42px 30px;
+
+  box-shadow:var(--shadow);
+}
+
+.feedback-box h2{
+  margin-bottom:12px;
+}
+
+.feedback-box p{
+  max-width:680px;
+
+  margin:
+    0 auto 24px;
+
+  color:var(--muted);
+}
+
+.feedback-note{
+  margin-top:15px;
+
+  color:#7f8ca8;
+
+  font-size:.8rem;
+}
+
+
+/* =========================
+   PRO SECTION
+========================= */
+
+.pro{
+  position:relative;
+
+  overflow:hidden;
+}
+
+.pro:before{
+  content:"";
+
+  position:absolute;
+
+  inset:
+    -80px auto auto -60px;
+
+  width:220px;
+
+  height:220px;
+
+  background:
+    rgba(167,139,250,.13);
+
+  filter:blur(40px);
+
+  border-radius:50%;
+}
+
+.pro-content{
+  position:relative;
+}
+
+.badge{
+  display:inline-block;
+
+  padding:5px 9px;
+
+  border:
+    1px solid
+    rgba(167,139,250,.35);
+
+  border-radius:999px;
+
+  color:#cfc2ff;
+
+  background:
+    rgba(167,139,250,.08);
+
+  font-size:.75rem;
+
+  font-weight:800;
+
+  margin-bottom:14px;
+}
+
+
+/* =========================
+   FAQ
+========================= */
+
+.faq{
+  border-top:
+    1px solid
+    var(--border);
+}
+
+details{
+  padding:18px 0;
+
+  border-bottom:
+    1px solid
+    var(--border);
+}
+
+summary{
+  cursor:pointer;
+
+  font-weight:780;
+}
+
+details p{
+  color:var(--muted);
+
+  margin:
+    9px 0 0;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  padding:
+    38px 0 55px;
+
+  border-top:
+    1px solid
+    var(--border);
+
+  color:var(--muted);
+
+  font-size:.86rem;
+}
+
+.footer-row{
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  flex-wrap:wrap;
+}
+
+.footer-links{
+  display:flex;
+
+  gap:18px;
+
+  flex-wrap:wrap;
+}
+
+.footer-links a:hover{
+  color:var(--text);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+  .grid{
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .workflow{
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .audience{
+    grid-template-columns:
+      1fr;
+  }
+
+}
+
+@media(max-width:650px){
+
+  .container{
+    width:
+      calc(100% - 28px);
+  }
+
+  .navlinks{
+    display:none;
+  }
+
+  .hero{
+    padding:
+      72px 0 55px;
+  }
+
+  h1{
+    font-size:
+      clamp(
+        2.45rem,
+        13vw,
+        4rem
+      );
+  }
+
+  section{
+    padding:58px 0;
+  }
+
+  .grid,
+  .workflow,
+  .evidence,
+  .statbar{
+    grid-template-columns:1fr;
+  }
+
+  .trust{
+    gap:7px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+<div class="container nav">
+
+<a class="brand" href="#">
+
+<span class="brand-mark">
+AI
+</span>
+
+<span>
+AI Regression Testing Starter Kit
+</span>
+
+</a>
+
+
+<div class="navlinks">
+
+<a href="#included">
+Included
+</a>
+
+<a href="#workflow">
+Workflow
+</a>
+
+<a href="#evidence">
+Evidence
+</a>
+
+<a href="#feedback">
+Feedback
+</a>
+
+<a href="#faq">
+FAQ
+</a>
+
+</div>
+
+</div>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+<div class="container">
+
+<div class="eyebrow">
+
+<span class="dot"></span>
+
+Free MVP · Ready to explore
+
+</div>
+
+
+<h1>
+
+Regression testing for
+
+<span class="gradient">
+AI &amp; LLM applications.
+</span>
+
+</h1>
+
+
+<p>
+
+A practical starter kit for QA Engineers, SDETs,
+and automation engineers who want a repeatable way
+to detect regressions when prompts, models, retrieval,
+or application logic change.
+
+</p>
+
+
+<div class="actions">
+
+<a
+class="btn primary"
+href="https://github.com/nikhilshendgetch-sudo/AI-Regression-Testing-Starter-Kit"
+target="_blank"
+rel="noopener"
+>
+Get the Free MVP →
+</a>
+
+
+<a
+class="btn"
+href="https://github.com/nikhilshendgetch-sudo/AI-Regression-Testing-Starter-Kit"
+target="_blank"
+rel="noopener"
+>
+View on GitHub
+</a>
+
+</div>
+
+
+<div class="trust">
+
+<span class="pill">
+Python
+</span>
+
+<span class="pill">
+pytest
+</span>
+
+<span class="pill">
+Promptfoo
+</span>
+
+<span class="pill">
+GitHub Actions
+</span>
+
+<span class="pill">
+Evaluation datasets
+</span>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<section class="stats">
+
+<div class="container">
+
+<div class="statbar">
+
+<div class="stat">
+
+<strong>
+Free MVP
+</strong>
+
+<span>
+Public starter kit
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<strong>
+13/13
+</strong>
+
+<span>
+Passing tests documented in the project
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<strong>
+CI-ready
+</strong>
+
+<span>
+GitHub Actions workflow included
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<main>
+
+
+<!-- =========================
+     PROBLEM
+========================= -->
+
+<section>
+
+<div class="container">
+
+<div class="head">
+
+<div class="kicker">
+The problem
+</div>
+
+
+<h2>
+AI behavior can regress without a traditional code failure.
+</h2>
+
+
+<p>
+
+A prompt change, model update, retrieval change,
+or application logic change can alter output quality.
+A repeatable baseline-and-compare workflow helps teams
+detect those changes before they become release problems.
+
+</p>
+
+</div>
+
+
+<div class="grid">
+
+
+<article class="card">
+
+<div class="icon">
+01
+</div>
+
+<h3>
+Baseline behavior
+</h3>
+
+<p>
+
+Capture representative scenarios and define
+expected behavior before making a change.
+
+</p>
+
+</article>
+
+
+<article class="card">
+
+<div class="icon">
+02
+</div>
+
+<h3>
+Repeatable evaluation
+</h3>
+
+<p>
+
+Run the same regression suite after prompt,
+model, retrieval, or application changes.
+
+</p>
+
+</article>
+
+
+<article class="card">
+
+<div class="icon">
+03
+</div>
+
+<h3>
+Evidence-driven QA
+</h3>
+
+<p>
+
+Use datasets, automated results, reports,
+and CI evidence to investigate regressions.
+
+</p>
+
+</article>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     INCLUDED
+========================= -->
+
+<section id="included">
+
+<div class="container">
+
+<div class="head">
+
+<div class="kicker">
+Free MVP
+</div>
+
+<h2>
+Everything you need to start.
+</h2>
+
+<p>
+
+A practical collection of code, datasets,
+examples, templates, and documentation for
+building an AI regression workflow.
+
+</p>
+
+</div>
+
+
+<div class="grid">
+
+
+<article class="card">
+
+<div class="icon">
+CSV
+</div>
+
+<h3>
+AI regression datasets
+</h3>
+
+<p>
+CSV-based evaluation data for representative
+AI testing scenarios.
+</p>
+
+</article>
+
+
+<article class="card">
+
+<div class="icon">
+PY
+</div>
+
+<h3>
+Python + pytest
+</h3>
+
+<p>
+Reusable regression testing examples built
+around Python and pytest.
+</p>
+
+</article>
+
+
+<article class="card">
+
+<div class="icon">
+PF
+</div>
+
+<h3>
+Promptfoo example
+</h3>
+
+<p>
+A starting point for structured LLM evaluation
+workflows using Promptfoo.
+</p>
+
+</article>
+
+
+<article class="card">
+
+<div class="icon">
+EV
+</div>
+
+<h3>
+Evaluation scorecard
+</h3>
+
+<p>
+Evaluation criteria and a scorecard approach
+for comparing AI response quality.
+</p>
+
+</article>
+
+
+<article class="card">
+
+<div class="icon">
+CI
+</div>
+
+<h3>
+CI workflow
+</h3>
+
+<p>
+GitHub Actions workflow support for repeatable
+automated regression execution.
+</p>
+
+</article>
+
+
+<article class="card">
+
+<div class="icon">
+DOC
+</div>
+
+<h3>
+Templates &amp; docs
+</h3>
+
+<p>
+Reusable templates and documentation that can
+be adapted to project-specific testing.
+</p>
+
+</article>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     WORKFLOW
+========================= -->
+
+<section id="workflow">
+
+<div class="container">
+
+<div class="head">
+
+<div class="kicker">
+Workflow
+</div>
+
+<h2>
+From baseline to release decision.
+</h2>
+
+<p>
+Use the same evaluation suite to compare
+AI behavior before and after a change.
+</p>
+
+</div>
+
+
+<div class="workflow">
+
+
+<div class="step">
+
+<div class="num">
+01
+</div>
+
+<strong>
+Create a dataset
+</strong>
+
+<p class="muted">
+Represent important AI use cases.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="num">
+02
+</div>
+
+<strong>
+Establish a baseline
+</strong>
+
+<p class="muted">
+Define expected behavior and quality thresholds.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="num">
+03
+</div>
+
+<strong>
+Run the suite
+</strong>
+
+<p class="muted">
+Execute the same checks after changes.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="num">
+04
+</div>
+
+<strong>
+Compare &amp; investigate
+</strong>
+
+<p class="muted">
+Identify regressions before release.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     EVIDENCE
+========================= -->
+
+<section id="evidence">
+
+<div class="container">
+
+<div class="head">
+
+<div class="kicker">
+Evidence
+</div>
+
+<h2>
+See the testing workflow in action.
+</h2>
+
+<p>
+The repository includes execution evidence and
+a self-contained HTML test report example.
+</p>
+
+</div>
+
+
+<div class="evidence">
+
+
+<figure class="shot">
+
+<img
+src="images/github-actions-success.png"
+alt="GitHub Actions successful regression test run"
+>
+
+<figcaption>
+GitHub Actions — automated regression execution.
+</figcaption>
+
+</figure>
+
+
+<figure class="shot">
+
+<img
+src="images/html-test-report.png"
+alt="HTML regression test report"
+>
+
+<figcaption>
+HTML test report — readable execution evidence.
+</figcaption>
+
+</figure>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     AUDIENCE
+========================= -->
+
+<section>
+
+<div class="container">
+
+<div class="audience">
+
+
+<div>
+
+<div class="kicker">
+Built for
+</div>
+
+<h2>
+QA teams working with AI.
+</h2>
+
+<p class="muted">
+
+Use the starter kit as a foundation for your
+own AI/LLM regression strategy.
+
+</p>
+
+
+<div
+class="actions"
+style="justify-content:flex-start;margin-top:22px"
+>
+
+<a
+class="btn primary"
+href="https://github.com/nikhilshendgetch-sudo/AI-Regression-Testing-Starter-Kit"
+target="_blank"
+rel="noopener"
+>
+Get the Free MVP →
+</a>
+
+</div>
+
+</div>
+
+
+<div class="mini-list">
+
+
+<div class="mini">
+✓ QA Engineers testing AI-powered applications
+</div>
+
+
+<div class="mini">
+✓ SDETs building automated regression workflows
+</div>
+
+
+<div class="mini">
+✓ Automation Engineers using Python &amp; pytest
+</div>
+
+
+<div class="mini">
+✓ Teams experimenting with LLM, RAG &amp; prompts
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     FEEDBACK
+========================= -->
+
+<section id="feedback">
+
+<div class="container">
+
+<div class="feedback-box">
+
+<div class="kicker">
+Help improve the MVP
+</div>
+
+
+<h2>
+Tried the Free MVP?
+</h2>
+
+
+<p>
+
+Your feedback helps improve the starter kit,
+identify missing features, and shape future
+versions of the product.
+
+</p>
+
+
+<div class="actions">
+
+<a
+class="btn feedback"
+href="https://forms.gle/gjacM7ki9Hd44Wcu5"
+target="_blank"
+rel="noopener"
+>
+📝 Share Your Feedback →
+</a>
+
+</div>
+
+
+<div class="feedback-note">
+
+Takes about 1–2 minutes · Feedback is optional
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     PRO
+========================= -->
+
+<section>
+
+<div class="container">
+
+<div class="callout pro">
+
+<div class="pro-content">
+
+<span class="badge">
+COMING SOON
+</span>
+
+
+<h2>
+From Free MVP to a deeper Pro edition.
+</h2>
+
+
+<p class="muted">
+
+The current MVP is the free starting point.
+Future Pro development may add deeper evaluation
+assets, advanced regression workflows, expanded
+examples, production-oriented templates, and
+additional documentation.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     START
+========================= -->
+
+<section>
+
+<div class="container">
+
+<div class="callout">
+
+<div class="kicker">
+Start here
+</div>
+
+
+<h2>
+Explore the Free MVP.
+</h2>
+
+
+<p class="muted">
+
+Clone the repository, install the dependencies,
+run the examples, and adapt the workflow to
+your application.
+
+</p>
+
+
+<div
+class="actions"
+style="justify-content:flex-start;margin-top:20px"
+>
+
+<a
+class="btn primary"
+href="https://github.com/nikhilshendgetch-sudo/AI-Regression-Testing-Starter-Kit"
+target="_blank"
+rel="noopener"
+>
+Get the Free MVP →
+</a>
+
+
+<a
+class="btn"
+href="https://github.com/nikhilshendgetch-sudo/AI-Regression-Testing-Starter-Kit/releases"
+target="_blank"
+rel="noopener"
+>
+View Release
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     FAQ
+========================= -->
+
+<section id="faq">
+
+<div class="container">
+
+<div class="head">
+
+<div class="kicker">
+FAQ
+</div>
+
+<h2>
+Common questions.
+</h2>
+
+</div>
+
+
+<div class="faq">
+
+
+<details>
+
+<summary>
+Is the MVP free?
+</summary>
+
+<p>
+
+Yes. The current starter kit is available
+as a free MVP through the public GitHub repository.
+
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+What technologies are included?
+</summary>
+
+<p>
+
+The project includes Python, pytest,
+Promptfoo examples, evaluation datasets,
+templates, documentation, and GitHub Actions.
+
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+Can I adapt it for my own AI application?
+</summary>
+
+<p>
+
+Yes. The kit is designed as a practical starting
+point that can be adapted to project-specific
+AI regression scenarios.
+
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+How can I provide feedback?
+</summary>
+
+<p>
+
+You can use the
+<a
+href="https://forms.gle/gjacM7ki9Hd44Wcu5"
+target="_blank"
+rel="noopener"
+style="color:#8ca8ff;"
+>
+feedback form
+</a>
+on this page.
+
+It takes approximately 1–2 minutes and helps
+improve future versions of the starter kit.
+
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+Is the Pro edition available now?
+</summary>
+
+<p>
+
+No. The Pro edition is planned for future development
+and is not being sold from this page.
+
+</p>
+
+</details>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<div class="container footer-row">
+
+
+<div>
+AI Regression Testing Starter Kit · Free MVP
+</div>
+
+
+<div class="footer-links">
+
+<a
+href="https://github.com/nikhilshendgetch-sudo/AI-Regression-Testing-Starter-Kit"
+target="_blank"
+rel="noopener"
+>
+GitHub
+</a>
+
+
+<a
+href="https://github.com/nikhilshendgetch-sudo/AI-Regression-Testing-Starter-Kit/releases"
+target="_blank"
+rel="noopener"
+>
+Releases
+</a>
+
+
+<a
+href="https://forms.gle/gjacM7ki9Hd44Wcu5"
+target="_blank"
+rel="noopener"
+>
+Feedback
+</a>
+
+</div>
+
+
+</div>
+
+</footer>
+
+
+</body>
+</html>
